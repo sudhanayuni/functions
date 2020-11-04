@@ -1,0 +1,197 @@
+mysql> create database std_marks;
+Query OK, 1 row affected (0.26 sec)
+
+mysql> use std_marks;
+Database changed
+mysql> create table students(std_id int,std_name varchar(100),std_marks int);
+Query OK, 0 rows affected (1.68 sec)
+
+mysql> insert into students(std_id,std_name,std_marks)values(1,'sanju',80);
+Query OK, 1 row affected (0.25 sec)
+
+mysql> insert into students(std_id,std_name,std_marks)values(1,'nani',60);
+Query OK, 1 row affected (0.22 sec)
+
+mysql> insert into students(std_id,std_name,std_marks)values(3,'bujji',90);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> UPDATE students SET std_id=2 where st_name='nani';
+ERROR 1054 (42S22): Unknown column 'st_name' in 'where clause'
+mysql> UPDATE students SET std_id=2 where std_name='nani';
+Query OK, 1 row affected (0.18 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> insert into students(std_id,std_name,std_marks)values(4,'chinni',65);
+Query OK, 1 row affected (0.25 sec)
+
+mysql> insert into students(std_id,std_name,std_marks)values(5,'ammu',85);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into students(std_id,std_name,std_marks)values(6,'akki',95);
+Query OK, 1 row affected (0.20 sec)
+
+mysql> select * from students;
++--------+----------+-----------+
+| std_id | std_name | std_marks |
++--------+----------+-----------+
+|      1 | sanju    |        80 |
+|      2 | nani     |        60 |
+|      3 | bujji    |        90 |
+|      4 | chinni   |        65 |
+|      5 | ammu     |        85 |
+|      6 | akki     |        95 |
++--------+----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select SUM(STD_marks)FROM STUDENTS;
++----------------+
+| SUM(STD_marks) |
++----------------+
+|            475 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select COUNT(STD_id)FROM STUDENTS;
++---------------+
+| COUNT(STD_id) |
++---------------+
+|             6 |
++---------------+
+1 row in set (0.10 sec)
+
+mysql> select COUNT(STD_id)FROM STUDENTS where std_marks>70;
++---------------+
+| COUNT(STD_id) |
++---------------+
+|             4 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select Avg(std_marks)
+    -> from students;
++----------------+
+| Avg(std_marks) |
++----------------+
+|        79.1667 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(std_id)from students;
++-------------+
+| avg(std_id) |
++-------------+
+|      3.5000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select MIN(std_marks)from students;
++----------------+
+| MIN(std_marks) |
++----------------+
+|             60 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select Max(std_marks)from students;
++----------------+
+| Max(std_marks) |
++----------------+
+|             95 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select  LCASE(std_name) from students;
++-----------------+
+| LCASE(std_name) |
++-----------------+
+| sanju           |
+| nani            |
+| bujji           |
+| chinni          |
+| ammu            |
+| akki            |
++-----------------+
+6 rows in set (0.08 sec)
+
+mysql> select  UCASE(std_name) from students;
++-----------------+
+| UCASE(std_name) |
++-----------------+
+| SANJU           |
+| NANI            |
+| BUJJI           |
+| CHINNI          |
+| AMMU            |
+| AKKI            |
++-----------------+
+6 rows in set (0.00 sec)
+
+
+mysql> select LENGTH("sanju") AS std_nameLen;
++-------------+
+| std_nameLen |
++-------------+
+|           5 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select LENGTH("bujji") AS std_nameLen;
++-------------+
+| std_nameLen |
++-------------+
+|           5 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select LENGTH("chinni") AS std_nameLen;
++-------------+
+| std_nameLen |
++-------------+
+|           6 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select MID(std_name,2,3) from students;
++-------------------+
+| MID(std_name,2,3) |
++-------------------+
+| anj               |
+| ani               |
+| ujj               |
+| hin               |
+| mmu               |
+| kki               |
++-------------------+
+6 rows in set (0.00 sec)
+
+mysql> select ROUND(std_marks) from students;
++------------------+
+| ROUND(std_marks) |
++------------------+
+|               80 |
+|               60 |
+|               90 |
+|               65 |
+|               85 |
+|               95 |
++------------------+
+6 rows in set (0.00 sec)
+
+mysql> select NOW();
++---------------------+
+| NOW()               |
++---------------------+
+| 2020-11-04 08:47:45 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT FROMAT(123456789,"###-###-###");
+ERROR 1305 (42000): FUNCTION std_marks.FROMAT does not exist
+mysql> SELECT FORMAT(123456789,"###-###-###");
++---------------------------------+
+| FORMAT(123456789,"###-###-###") |
++---------------------------------+
+| 123,456,789                     |
++---------------------------------+
+1 row in set, 1 warning (0.00 sec)
+
